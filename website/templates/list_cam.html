@@ -117,6 +117,9 @@
                       <td>{{ camera.lokasi }}</td>
                       <td>{{ camera.ipcam }}</td>
                       <td>
+                        <a href="{{ url_for('views.editCam', id=camera.id) }}">
+                          <button class="btn btn-primary btn-sm">Edit</button>
+                        </a>
                         <button
                           class="btn btn-danger btn-sm"
                           style="margin-right: 5px"
@@ -124,9 +127,6 @@
                         >
                           Delete
                         </button>
-                        <a href="{{ url_for('views.editCam', id=camera.id) }}">
-                          <button class="btn btn-primary btn-sm">Edit</button>
-                        </a>
                       </td>
                     </tr>
                     {% endfor %}

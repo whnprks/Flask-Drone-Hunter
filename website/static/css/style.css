@@ -9,7 +9,9 @@
 * Pinterest: https://pinterest.com/Untree_co/
 */
 
-
+a:hover {
+  text-decoration: none;
+}
 th, td {
   padding: 5px;
   text-align: center;
