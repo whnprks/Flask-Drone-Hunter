@@ -1,0 +1,273 @@
+<!-- /*
+* Template Name: Learner
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="Untree.co" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/sapta.png') }}"
+    />
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Display+Playfair:wght@400;700&family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='fonts/icomoon/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/aos.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/box.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/box.css') }}"
+    />
+    <style>
+      img.video {
+        width: 850px;
+        height: 550px;
+        border-radius: 35px;
+        object-fit: contain;
+        margin: 40px;
+        background: black;
+        position: relative;
+        top: 60px;
+        left: 160px;
+      }
+      body {
+        overflow: hidden; /* Menonaktifkan scroll pada body */
+      }
+      #content {
+        display: flex;
+        padding: 20px;
+      }
+
+      #preview-container {
+        display: flex;
+        align-items: center;
+      }
+
+      #preview {
+        margin-right: 120px; /* Atur jarak antara gambar dan tabel */
+        top: 0;
+      }
+
+      #detection-list table {
+        border-collapse: collapse;
+        width: 100px; /* Sesuaikan lebar tabel sesuai kebutuhan */
+      }
+
+      #detection-list th,
+      #detection-list td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      table {
+        font-size: 14px; /* Atur ukuran teks sesuai kebutuhan */
+      }
+
+      th,
+      td {
+        padding: 8px; /* Atur padding sesuai kebutuhan */
+      }
+    </style>
+
+    <title>Drone Hunter</title>
+  </head>
+
+  <body>
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav mb-5">
+      <div class="pb-2 top-bar mb-3">
+        <div class="container">
+          <div class="row align-text-left">
+            <div class="col-6 col-lg-8">
+              <img
+                class="gambar"
+                src="{{ url_for('static', filename='images/saptafull.png') }}"
+                alt=""
+              />
+            </div>
+            <div class="col-6 col-lg-4 text-right">
+              <a href="/home" class="small mr-3"> Home </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="untree_co-hero overlay"
+      style="background-image: url('{{ url_for('static', filename='images/jammer.jpg') }}');"
+    >
+      <div id="content">
+        <div id="preview-container">
+          <div id="preview">
+            <img
+              class="video"
+              src="{{ url_for('views.Ipapp', id=camera) }}"
+              alt="Upload video"
+            />
+          </div>
+          <div class="main-box" data-aos="fade-up" data-aos-delay="100">
+            {% for camera_id in camera %}
+            <div class="box">
+              <h2
+                style="
+                  text-align: center;
+                  border-bottom: 1px solid #ccc;
+                  padding-bottom: 10px;
+                "
+              >
+                Camera {{camera_id}}
+              </h2>
+              <table id="coordinatesTable">
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">Coordinates</th>
+                    <th class="column3">Tracking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="column1" id="coordinate"></td>
+                    <td class="column3">
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger btn-sm"
+                        id="tracking"
+                      >
+                        ON
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- /.container -->
+    </div>
+    <!-- /.untree_co-hero -->
+
+    <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      var interval;
+      $("#tracking").click(function () {
+        let trackStat = $(this).text().trim();
+        let text = trackStat == "ON" ? "OFF" : "ON";
+        $(this).text(text);
+
+        if (text.toLowerCase() == "off") {
+          console.log("ini on");
+          interval = setInterval(function () {
+            post();
+          }, 500);
+        } else {
+          console.log("ini off");
+          clearInterval(interval);
+        }
+      });
+
+      // Variabel untuk menyimpan data koordinat
+      var currentCoordinates = { XCoord: "0", YCoord: "0" };
+      // Function to update the table with coordinates
+      function updateTable() {
+        $.ajax({
+          url: "/get_coordinates",
+          method: "GET",
+          success: function (data) {
+            // Parse the JSON string into a JavaScript object
+
+            // Simpan data koordinat dalam variabel
+            currentCoordinates.XCoord = data.XCoord;
+            currentCoordinates.YCoord = data.YCoord;
+            console.log(currentCoordinates);
+            // Update the table cells with the new coordinates
+            $("#coordinate").text("X: " + data.XCoord + " - Y: " + data.YCoord);
+          },
+          error: function (error) {
+            console.error("Error fetching coordinates:", error);
+          },
+        });
+      }
+
+      function post() {
+        // Melakukan POST request menggunakan jQuery AJAX
+        // Mengonversi ke format JSON yang diinginkan
+        var formattedJson = {
+          XCoord: currentCoordinates.XCoord,
+          YCoord: currentCoordinates.YCoord,
+        };
+
+        // Menggunakan JSON.stringify untuk mengonversi objek JavaScript ke string JSON
+        var jsonString = JSON.stringify(formattedJson);
+
+        $.ajax({
+          type: "POST",
+          url: "http://192.168.0.2:80/api", // Ganti dengan URL Arduino Anda
+          data: jsonString,
+
+          success: function (response) {
+            console.log("Data berhasil dikirim ke Arduino:", response);
+          },
+          error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+          },
+        });
+      }
+
+      $(document).ready(function () {
+        // Initial update when the page loads
+        updateTable();
+
+        // Optionally, set an interval for periodic updates
+        setInterval(updateTable, 500); // Update every 5 seconds, for example
+      });
+    </script>
+  </body>
+</html>

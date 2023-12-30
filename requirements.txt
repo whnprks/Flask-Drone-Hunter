@@ -1,0 +1,9 @@
+flask
+Flask-SQLAlchemy
+flask-login
+ultralytics
+numpy
+opencv-python
+matplotlib
+flask
+flask-wtf

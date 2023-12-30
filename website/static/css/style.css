@@ -1,0 +1,189 @@
+/*
+* Template Name: Learner
+* Template Author: Untree.co
+* Template License: https://creativecommons.org/licenses/by/3.0/
+* Author URI: https://untree.co/
+
+* Twitter: https://twitter.com/Untree_co
+* Facebook: https://web.facebook.com/Untree.co/
+* Pinterest: https://pinterest.com/Untree_co/
+*/
+
+
+th, td {
+  padding: 5px;
+  text-align: center;
+} 
+
+th {
+  padding: 8px;
+  color: white;
+}
+
+/* button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+} */
+
+tbody{
+  color: white;
+}
+
+.red-button {
+  background-color: #ff0000;
+}
+
+.blue-button {
+  background-color: #0000ff;
+}
+
+body {
+  background-color: gray;
+}
+.top-bar a {
+  color: #ffffff; }
+
+.site-nav {
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+  top: 0; }
+
+.site-nav a {
+  position: relative;
+  z-index: 9;
+  cursor: pointer; }
+
+.site-nav {
+  padding-top: 20px;
+  padding-bottom: 100px; }
+
+.untree_co-hero, 
+.bg-img {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(26, 26, 27, 0.85);
+  position: relative; }
+
+.untree_co-hero.overlay, 
+.bg-img.overlay {
+  position: relative; }
+
+.untree_co-hero.overlay:before, 
+.bg-img.overlay:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 27, 0.85);
+  z-index: -0; }
+
+.untree_co-hero > .container, .bg-img > .container {
+  position: relative;
+  z-index: 2; }
+
+.untree_co-hero, .untree_co-hero > .container > 
+.row, .bg-img, .bg-img > .container > .row {
+  height: 100vh;
+  min-height: 650px; }
+
+@media (max-width: 767.98px) {
+  .untree_co-hero, .untree_co-hero > .container > .row, .bg-img, .bg-img > .container > .row {
+    min-height: 750px; } }
+
+.untree_co-hero .caption, .bg-img .caption {
+  text-transform: uppercase;
+  color: green;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .1rem; }
+
+.untree_co-hero .heading, .bg-img .heading {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.4; }
+
+  @media (max-width: 991.98px) {
+    .untree_co-hero .heading, .bg-img .heading {
+      font-size: 30px; } }
+
+  .untree_co-hero .link-highlight:hover, .bg-img .link-highlight:hover {
+    -webkit-box-shadow: 0 2px 0 0 white;
+    box-shadow: 0 2px 0 0 white; }
+
+.untree_co-hero .desc, .bg-img .desc {
+  font-size: 18px;
+  max-width: 450px; }
+
+  @media (max-width: 991.98px) {
+    .untree_co-hero .desc, .bg-img .desc {
+      margin: 0 auto; } }
+
+.untree_co-hero .cta-section, .untree_co-hero .cta-section > .container > .row, .bg-img .cta-section, .bg-img .cta-section > .container > .row {
+  height: 70vh;
+  min-height: 450px; }
+
+.untree_co-section {
+padding: 50px 50px;
+align-items: center;
+position: relative; }
+
+.gambar{
+width: 250px;
+height: auto;
+}
+
+.category {
+display: inline-block;
+padding: 20px;
+background:black;
+border-radius: 4px;
+align-items: center;
+text-decoration: none !important; }
+
+.category, .category h3, .category span {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+
+.category h3 {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: white;
+  }
+
+.category span {
+  font-size: 13px;
+  color: grey; }
+
+.category .uil {
+  text-align: center;
+  display: inline-block;
+  color: #00aeff;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 20px;
+  background: black;
+  font-size: 30px;
+  line-height: 40px; }
+
+.category:hover {
+  background: #00aeff; }
+
+  .category:hover h3, .category:hover span {
+    color: #ffffff; }
+
+  .category:hover span {
+    color: rgba(255, 255, 255, 0.5); }
+
+      
