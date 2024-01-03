@@ -238,19 +238,9 @@
 
       function post() {
         // Melakukan POST request menggunakan jQuery AJAX
-        // Mengonversi ke format JSON yang diinginkan
-        var formattedJson = {
-          XCoord: currentCoordinates.XCoord,
-          YCoord: currentCoordinates.YCoord,
-        };
-
-        // Menggunakan JSON.stringify untuk mengonversi objek JavaScript ke string JSON
-        var jsonString = JSON.stringify(formattedJson);
-
         $.ajax({
-          type: "POST",
-          url: "http://192.168.0.2:80/api", // Ganti dengan URL Arduino Anda
-          data: jsonString,
+          type: "GET",
+          url: "/send_coordinates", // Ganti dengan URL Arduino Anda
 
           success: function (response) {
             console.log("Data berhasil dikirim ke Arduino:", response);

@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, StringField, DecimalRangeField, IntegerRangeField
 from werkzeug.utils import secure_filename
 from wtforms.validators import InputRequired, NumberRange
+import requests
 import os
 from .models import Camera
 from . import db
@@ -125,6 +126,44 @@ def get_coordinates():
 
     print(coordinates)
     return coordinates
+
+@views.route('/send_coordinates')
+def send_coordinates():
+    global last_coordinates, last_update_time
+    session.clear()
+    data = global_label
+
+    # Check if data has the expected format
+    if '-' in data and '=' in data:
+        x_value = data.split('-')[0].split('=')[1]
+        y_value = data.split('-')[1].split('=')[1]
+
+        # Creating a dictionary for the coordinates
+        coordinates = {
+            "XCoord": x_value,
+            "YCoord": y_value
+        }
+
+    else:
+        # If data doesn't have the expected format, provide default values
+        coordinates = {"XCoord": "0", "YCoord": "0"}
+
+    # URL endpoint to send the coordinates
+    endpoint_url = "http://192.168.0.2:5000/api"
+
+    try:
+        # Sending POST request with the coordinates data
+        response = requests.post(endpoint_url, json=coordinates)
+
+        # Check the response status
+        if response.status_code == 200:
+            print("Coordinates sent successfully!")
+        else:
+            print(f"Failed to send coordinates. Status code: {response.status_code}")
+
+    except Exception as e:
+        print(f"Error sending coordinates: {str(e)}")
+
 
 @views.route("/ipcam", methods=['GET', 'POST'])
 @login_required
