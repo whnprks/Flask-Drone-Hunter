@@ -188,4 +188,45 @@ text-decoration: none !important; }
   .category:hover span {
     color: rgba(255, 255, 255, 0.5); }
 
-      
+/* Desktop Styles */
+
+/* Bagian Umum */
+/* ... (kode CSS yang ada sebelumnya) */
+
+/* Bagian Responsif untuk Layar Lebar/Dekstop */
+@media (min-width: 768px) {
+  /* Misalnya, atur ulang lebar top-bar */
+  .top-bar {
+    width: 100%;
+  }
+
+  /* Atur ulang beberapa elemen lainnya */
+  .site-nav {
+    padding-top: 10px;
+    padding-bottom: 50px;
+  }
+
+  /* Modifikasi lebar gambar atau elemen lainnya */
+  .gambar {
+    width: 300px;
+  }
+
+  /* Modifikasi tata letak atau properti lain sesuai kebutuhan */
+}
+
+/* Mobile Styles */
+
+/* Bagian Responsif untuk Layar Mobile */
+@media (max-width: 767.98px) {
+  /* Misalnya, sesuaikan padding pada bagian .untree_co-section untuk layar kecil */
+  .untree_co-section {
+    padding: 30px;
+  }
+
+  /* Atur ulang ukuran font atau tata letak untuk layar mobile */
+  .category h3 {
+    font-size: 14px;
+  }
+
+  /* Modifikasi properti lainnya untuk tampilan mobile */
+}
