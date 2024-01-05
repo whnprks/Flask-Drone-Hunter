@@ -18,10 +18,6 @@ import time
 # Required to run the YOLOv8 model
 import cv2
 
-# YOLO_Video is the python file which contains the code for our object detection model
-# Video Detection is the Function which performs Object Detection on Input Video
-# from YOLO_Video import video_detection
-
 views = Blueprint('views', __name__)
 
 
@@ -29,7 +25,7 @@ views = Blueprint('views', __name__)
 global_label = ""
 
 def video_detection(path_x):
-    global global_label  # Declare global variable
+    global global_label 
 
     video_capture = path_x
     cap = cv2.VideoCapture(video_capture)
@@ -42,7 +38,7 @@ def video_detection(path_x):
 
     while True:
         success, img = cap.read()
-        detected_drone = False  # Flag to track if drone is detected
+        detected_drone = False  
 
         results = model(img, stream=True)
         for r in results:
@@ -114,14 +110,12 @@ def get_coordinates():
         x_value = data.split('-')[0].split('=')[1]
         y_value = data.split('-')[1].split('=')[1]
 
-        # Creating a dictionary for the coordinates
         coordinates = {
             "XCoord": x_value,
             "YCoord": y_value
         }
 
     else:
-        # If data doesn't have the expected format, provide default values
         coordinates = {"XCoord": "0", "YCoord": "0"}
 
     print(coordinates)
@@ -145,7 +139,6 @@ def send_coordinates():
         }
 
     else:
-        # If data doesn't have the expected format, provide default values
         coordinates = {"XCoord": "0", "YCoord": "0"}
 
     # URL endpoint to send the coordinates
@@ -155,7 +148,6 @@ def send_coordinates():
         # Sending POST request with the coordinates data
         response = requests.post(endpoint_url, json=coordinates)
 
-        # Check the response status
         if response.status_code == 200:
             print("Coordinates sent successfully!")
         else:
@@ -172,7 +164,6 @@ def Ipcam():
 
     # Mengecek apakah 'id' ada dalam parameter URL
     camera_id = request.args.get('id')
-    # Retrieve coordinates_json from the session
     if camera_id is not None:
         print(f"Camera ID: {camera_id}")
     else:
@@ -196,11 +187,8 @@ def Ipapp():
             ipcam_value = int(camera.ipcam)
             return Response(generate_frames_web(path_x=ipcam_value), mimetype='multipart/x-mixed-replace; boundary=frame')
         else:
-            # print("hehe")
             return Response(generate_frames_web(path_x=f'{camera.ipcam}'), mimetype='multipart/x-mixed-replace; boundary=frame')
         
-    # return Response(generate_frames(path_x = session.get('video_path', None),conf_=round(float(session.get('conf_', None))/100,2)),mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 @views.route('/list-cam', methods=['GET', 'POST'])
 @login_required
@@ -290,7 +278,6 @@ def editCam():
         if existing_camera:
             # Check if the ipcam is the same as the old one
             if Newipcam == Oldipcam:
-                # Update the existing camera's 'lokasi' field
                 existing_camera.lokasi = lokasi
                 db.session.commit()
 
