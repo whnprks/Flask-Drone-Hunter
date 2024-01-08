@@ -32,7 +32,7 @@ def video_detection(path_x):
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
 
-    model = YOLO("../YOLO-Weights/drone_yolov8n_50.pt")
+    model = YOLO("YOLO-Weights/drone_yolov8n_50.pt")
     classNames = ["drone"]
     threshold = 0.45
 
